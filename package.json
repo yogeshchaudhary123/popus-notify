@@ -15,7 +15,8 @@
   },
   "files": [
     "src",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -31,5 +32,12 @@
     "url": "git+https://github.com/yogeshchaudhary123/popus-notify.git"
   },
   "author": "Yogesh Chaudhary",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yogeshchaudhary123/popus-notify/issues"
+  },
+  "homepage": "https://github.com/yogeshchaudhary123/popus-notify#readme",
+  "directories": {
+    "example": "examples"
+  }
 }
