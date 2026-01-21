@@ -11,7 +11,8 @@ class Popus {
             closable: true,
             pauseOnHover: true,
             icon: null,
-            onClose: null
+            onClose: null,
+            allowHTML: false
         };
     }
 
@@ -40,13 +41,21 @@ class Popus {
         if (settings.icon) {
             const iconWrapper = document.createElement('div');
             iconWrapper.className = 'popus-icon';
-            iconWrapper.innerHTML = settings.icon;
+            if (settings.allowHTML) {
+                iconWrapper.innerHTML = settings.icon;
+            } else {
+                iconWrapper.textContent = settings.icon;
+            }
             toast.appendChild(iconWrapper);
         }
 
         const content = document.createElement('div');
         content.className = 'popus-content';
-        content.innerHTML = message; // Use innerHTML to support HTML content
+        if (settings.allowHTML) {
+            content.innerHTML = message;
+        } else {
+            content.textContent = message;
+        }
         toast.appendChild(content);
 
         if (settings.closable) {
