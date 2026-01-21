@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popus Notify Professional Demo</title>
+    <link rel="stylesheet" href="../src/styles.css">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f1f5f9;
+            color: #0f172a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        p {
+            color: #64748b;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        button {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .btn-success {
+            background: #00c853;
+            color: white;
+        }
+
+        .btn-error {
+            background: #ff5252;
+            color: white;
+        }
+
+        .btn-info {
+            background: #2196f3;
+            color: white;
+        }
+
+        .btn-warn {
+            background: #ffab00;
+            color: white;
+        }
+
+        .btn-dark {
+            background: #1e293b;
+            color: white;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        select,
+        input {
+            padding: 0.6rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: #e2e8f0;
+            color: #475569;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <span class="badge">Version 2.0 (Professional)</span>
+        <h1>Popus Notify</h1>
+        <p>Enhance user feedback with accessible, beautiful, and interactive notifications.</p>
+
+        <div class="section">
+            <span class="section-title">Standard Types</span>
+            <div class="grid">
+                <button class="btn-success"
+                    onclick="popus.success('Success! File uploaded.', { position: getPos() })">Success</button>
+                <button class="btn-error"
+                    onclick="popus.error('Error! Server not found.', { position: getPos() })">Error</button>
+                <button class="btn-info"
+                    onclick="popus.info('Note: Backup complete.', { position: getPos() })">Info</button>
+                <button class="btn-warn"
+                    onclick="popus.warn('Warning: Low storage.', { position: getPos() })">Warning</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <span class="section-title">New Features</span>
+            <div class="grid">
+                <button class="btn-dark" onclick="testCustomHTML()">Custom HTML</button>
+                <button class="btn-dark" onclick="testIcon()">Icon Support</button>
+                <button class="btn-dark" onclick="testLongDuration()">Pause on Hover</button>
+                <button class="btn-dark" onclick="testNoClose()">No Close Btn</button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div>
+                <label for="pos"
+                    style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.3rem;">POSITION</label>
+                <select id="pos">
+                    <option value="bottom-right">Bottom Right</option>
+                    <option value="top-right">Top Right</option>
+                    <option value="top-center">Top Center</option>
+                    <option value="bottom-center">Bottom Center</option>
+                    <option value="top-left">Top Left</option>
+                    <option value="bottom-left">Bottom Left</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/index.js"></script>
+    <script>
+        function getPos() {
+            return document.getElementById('pos').value;
+        }
+
+        function testCustomHTML() {
+            popus.show('<strong>Bold</strong> and <em>italic</em> content supported.', 'info', {
+                position: getPos(),
+                duration: 5000
+            });
+        }
+
+        function testIcon() {
+            const svgIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`;
+            popus.show('Message with custom SVG icon!', 'success', {
+                position: getPos(),
+                icon: svgIcon
+            });
+        }
+
+        function testLongDuration() {
+            popus.show('Hover over me to pause the progress bar! (10s duration)', 'info', {
+                position: getPos(),
+                duration: 10000,
+                pauseOnHover: true
+            });
+        }
+
+        function testNoClose() {
+            popus.show('I cannot be closed manually.', 'warn', {
+                position: getPos(),
+                closable: false,
+                duration: 4000
+            });
+        }
+    </script>
+</body>
+
+</html>

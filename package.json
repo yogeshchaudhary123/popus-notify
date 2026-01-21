@@ -1,0 +1,35 @@
+{
+  "name": "popus-notify",
+  "version": "1.0.0",
+  "description": "A lightweight Snackbar-style notification library.",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./src/index.js",
+      "types": "./src/index.d.ts"
+    },
+    "./styles.css": "./src/styles.css"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "notification",
+    "snackbar",
+    "toast",
+    "ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yogeshchaudhary123/popus-notify.git"
+  },
+  "author": "Yogesh Chaudhary",
+  "license": "MIT"
+}
