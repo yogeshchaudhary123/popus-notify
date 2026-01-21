@@ -193,7 +193,8 @@
         function testCustomHTML() {
             popus.show('<strong>Bold</strong> and <em>italic</em> content supported.', 'info', {
                 position: getPos(),
-                duration: 5000
+                duration: 5000,
+                allowHTML: true 
             });
         }
 
@@ -201,7 +202,8 @@
             const svgIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`;
             popus.show('Message with custom SVG icon!', 'success', {
                 position: getPos(),
-                icon: svgIcon
+                icon: svgIcon,
+                allowHTML: true 
             });
         }
 
