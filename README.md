@@ -20,6 +20,28 @@ A tiny toast factory that pops messages onto the screen and vanishes politely. L
 npm install popus-notify
 ```
 
+### React (with TypeScript)
+
+Import the styles in your main entry file (e.g., `App.tsx`):
+
+```typescript
+import 'popus-notify/styles.css';
+```
+
+Then use the singleton in your components:
+
+```tsx
+import popus from 'popus-notify';
+
+const App = () => {
+  return (
+    <button onClick={() => popus.success('React + TS works!')}>
+      Click me
+    </button>
+  );
+};
+```
+
 ## Quick Start
 
 ### 1. Include Styles
@@ -51,7 +73,8 @@ popus.show('<strong>Bold</strong> content supported!', 'info', {
   position: 'top-center',
   closable: true,
   pauseOnHover: true,
-  icon: '<svg>...</svg>' // Custom SVG icon support
+  icon: '<svg>...</svg>', // Custom SVG icon support
+  allowHTML: true
 });
 ```
 
@@ -65,6 +88,19 @@ popus.show('<strong>Bold</strong> content supported!', 'info', {
 | `pauseOnHover`| `boolean` | `true` | Pauses timer and progress bar when hovered. |
 | `icon` | `string` | `null` | Custom SVG string for the notification icon. |
 | `onClose` | `function`| `null` | Callback function executed after dismissal. |
+| `allowHTML` | `boolean` | `false` | Set to `true` to render messages and icons as HTML. |
+
+## Security
+
+To protect against Cross-Site Scripting (XSS), `popus-notify` escapes HTML by default. If you need to render HTML content, you must explicitly set the `allowHTML` option to `true`.
+
+```javascript
+// Safe (Default) - renders as plain text
+popus.info('Hello <script>alert("xss")</script>'); 
+
+// Render HTML - only use with trusted content
+popus.info('Click <a href="#">here</a>', { allowHTML: true });
+```
 
 ## Custom Theming
 
