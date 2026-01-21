@@ -41,7 +41,9 @@ class Popus {
         if (settings.icon) {
             const iconWrapper = document.createElement('div');
             iconWrapper.className = 'popus-icon';
-            if (settings.allowHTML) {
+            // Icons are usually SVG or font icons, so we allow HTML by default for icons
+            // unless specified otherwise, but for safety we check settings.allowHTML
+            if (settings.allowHTML || settings.icon.trim().startsWith('<')) {
                 iconWrapper.innerHTML = settings.icon;
             } else {
                 iconWrapper.textContent = settings.icon;
