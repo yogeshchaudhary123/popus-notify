@@ -36,6 +36,12 @@ export interface PopusOptions {
      * Custom HTML for the icon or content area.
      */
     icon?: string;
+
+    /**
+     * Whether to allow HTML content in the message and icon.
+     * @default false
+     */
+    allowHTML?: boolean;
 }
 
 /**
