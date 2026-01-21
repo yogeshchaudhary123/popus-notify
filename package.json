@@ -1,6 +1,6 @@
 {
   "name": "popus-notify",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A lightweight Snackbar-style notification library.",
   "main": "src/index.js",
   "module": "src/index.js",
